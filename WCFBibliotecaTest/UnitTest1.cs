@@ -1,7 +1,6 @@
 ﻿using System;
 using System.ServiceModel;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-// pruebas 4
 namespace WCFBibliotecaTest
 {
     [TestClass]
