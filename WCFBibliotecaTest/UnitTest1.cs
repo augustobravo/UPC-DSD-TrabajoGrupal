@@ -1,7 +1,7 @@
 ﻿using System;
 using System.ServiceModel;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-
+// pruebas 4
 namespace WCFBibliotecaTest
 {
     [TestClass]
@@ -12,6 +12,7 @@ namespace WCFBibliotecaTest
         {
             LibrosWS.LibrosClient proxy = new LibrosWS.LibrosClient();
             LibrosWS.Libro libroCreado = proxy.CrearLibro(new LibrosWS.Libro()
+              //Cambio de prueba
             {
                 CodigoLibro = "L0006",
                 Titulo = "Titulo6",
