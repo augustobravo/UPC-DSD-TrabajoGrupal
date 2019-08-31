@@ -24,6 +24,7 @@ namespace WCFBibliotecaTest
                 Estado = 1               
             });
 
+
             Assert.AreEqual("L0006", libroCreado.CodigoLibro);
             Assert.AreEqual("Titulo6", libroCreado.Titulo);
             Assert.AreEqual("Autor4", libroCreado.Autor);
