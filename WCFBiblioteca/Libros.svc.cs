@@ -94,9 +94,10 @@ namespace WCFBiblioteca
             return libroDAO.ObtenerPorAutor(autor);
         }
         
-        public void nuevoMetodo()
+        public void nuevoMetodo(int a)
         {
-
+            int b = 0;
+            a = b;
         }
     }
 }
