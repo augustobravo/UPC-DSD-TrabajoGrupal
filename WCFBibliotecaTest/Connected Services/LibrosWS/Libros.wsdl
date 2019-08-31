@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="Libros" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import schemaLocation="http://localhost:49525/Libros.svc?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="http://localhost:49525/Libros.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/WCFBiblioteca.Errores" />
+      <xsd:import schemaLocation="http://localhost:49525/Libros.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://localhost:49525/Libros.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/WCFBiblioteca.Dominio" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="ILibros_CrearLibro_InputMessage">
+    <wsdl:part name="parameters" element="tns:CrearLibro" />
+  </wsdl:message>
+  <wsdl:message name="ILibros_CrearLibro_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CrearLibroResponse" />
+  </wsdl:message>
+  <wsdl:message name="ILibros_CrearLibro_RepetidoExceptionFault_FaultMessage">
+    <wsdl:part xmlns:q1="http://schemas.datacontract.org/2004/07/WCFBiblioteca.Errores" name="detail" element="q1:RepetidoException" />
+  </wsdl:message>
+  <wsdl:message name="ILibros_ObtenerLibro_InputMessage">
+    <wsdl:part name="parameters" element="tns:ObtenerLibro" />
+  </wsdl:message>
+  <wsdl:message name="ILibros_ObtenerLibro_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ObtenerLibroResponse" />
+  </wsdl:message>
+  <wsdl:message name="ILibros_ObtenerLibro_RepetidoExceptionFault_FaultMessage">
+    <wsdl:part xmlns:q2="http://schemas.datacontract.org/2004/07/WCFBiblioteca.Errores" name="detail" element="q2:RepetidoException" />
+  </wsdl:message>
+  <wsdl:message name="ILibros_ModificarLibro_InputMessage">
+    <wsdl:part name="parameters" element="tns:ModificarLibro" />
+  </wsdl:message>
+  <wsdl:message name="ILibros_ModificarLibro_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ModificarLibroResponse" />
+  </wsdl:message>
+  <wsdl:message name="ILibros_ModificarLibro_RepetidoExceptionFault_FaultMessage">
+    <wsdl:part xmlns:q3="http://schemas.datacontract.org/2004/07/WCFBiblioteca.Errores" name="detail" element="q3:RepetidoException" />
+  </wsdl:message>
+  <wsdl:message name="ILibros_EliminarLibro_InputMessage">
+    <wsdl:part name="parameters" element="tns:EliminarLibro" />
+  </wsdl:message>
+  <wsdl:message name="ILibros_EliminarLibro_OutputMessage">
+    <wsdl:part name="parameters" element="tns:EliminarLibroResponse" />
+  </wsdl:message>
+  <wsdl:message name="ILibros_EliminarLibro_RepetidoExceptionFault_FaultMessage">
+    <wsdl:part xmlns:q4="http://schemas.datacontract.org/2004/07/WCFBiblioteca.Errores" name="detail" element="q4:RepetidoException" />
+  </wsdl:message>
+  <wsdl:message name="ILibros_ListarLibros_InputMessage">
+    <wsdl:part name="parameters" element="tns:ListarLibros" />
+  </wsdl:message>
+  <wsdl:message name="ILibros_ListarLibros_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ListarLibrosResponse" />
+  </wsdl:message>
+  <wsdl:message name="ILibros_ListarLibros_RepetidoExceptionFault_FaultMessage">
+    <wsdl:part xmlns:q5="http://schemas.datacontract.org/2004/07/WCFBiblioteca.Errores" name="detail" element="q5:RepetidoException" />
+  </wsdl:message>
+  <wsdl:message name="ILibros_ObtenerLibroPorTitulo_InputMessage">
+    <wsdl:part name="parameters" element="tns:ObtenerLibroPorTitulo" />
+  </wsdl:message>
+  <wsdl:message name="ILibros_ObtenerLibroPorTitulo_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ObtenerLibroPorTituloResponse" />
+  </wsdl:message>
+  <wsdl:message name="ILibros_ObtenerLibroPorTitulo_RepetidoExceptionFault_FaultMessage">
+    <wsdl:part xmlns:q6="http://schemas.datacontract.org/2004/07/WCFBiblioteca.Errores" name="detail" element="q6:RepetidoException" />
+  </wsdl:message>
+  <wsdl:message name="ILibros_ObtenerLibroPorAutor_InputMessage">
+    <wsdl:part name="parameters" element="tns:ObtenerLibroPorAutor" />
+  </wsdl:message>
+  <wsdl:message name="ILibros_ObtenerLibroPorAutor_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ObtenerLibroPorAutorResponse" />
+  </wsdl:message>
+  <wsdl:message name="ILibros_ObtenerLibroPorAutor_RepetidoExceptionFault_FaultMessage">
+    <wsdl:part xmlns:q7="http://schemas.datacontract.org/2004/07/WCFBiblioteca.Errores" name="detail" element="q7:RepetidoException" />
+  </wsdl:message>
+  <wsdl:portType name="ILibros">
+    <wsdl:operation name="CrearLibro">
+      <wsdl:input wsaw:Action="http://tempuri.org/ILibros/CrearLibro" message="tns:ILibros_CrearLibro_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ILibros/CrearLibroResponse" message="tns:ILibros_CrearLibro_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/ILibros/CrearLibroRepetidoExceptionFault" name="RepetidoExceptionFault" message="tns:ILibros_CrearLibro_RepetidoExceptionFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerLibro">
+      <wsdl:input wsaw:Action="http://tempuri.org/ILibros/ObtenerLibro" message="tns:ILibros_ObtenerLibro_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ILibros/ObtenerLibroResponse" message="tns:ILibros_ObtenerLibro_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/ILibros/ObtenerLibroRepetidoExceptionFault" name="RepetidoExceptionFault" message="tns:ILibros_ObtenerLibro_RepetidoExceptionFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ModificarLibro">
+      <wsdl:input wsaw:Action="http://tempuri.org/ILibros/ModificarLibro" message="tns:ILibros_ModificarLibro_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ILibros/ModificarLibroResponse" message="tns:ILibros_ModificarLibro_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/ILibros/ModificarLibroRepetidoExceptionFault" name="RepetidoExceptionFault" message="tns:ILibros_ModificarLibro_RepetidoExceptionFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="EliminarLibro">
+      <wsdl:input wsaw:Action="http://tempuri.org/ILibros/EliminarLibro" message="tns:ILibros_EliminarLibro_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ILibros/EliminarLibroResponse" message="tns:ILibros_EliminarLibro_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/ILibros/EliminarLibroRepetidoExceptionFault" name="RepetidoExceptionFault" message="tns:ILibros_EliminarLibro_RepetidoExceptionFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ListarLibros">
+      <wsdl:input wsaw:Action="http://tempuri.org/ILibros/ListarLibros" message="tns:ILibros_ListarLibros_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ILibros/ListarLibrosResponse" message="tns:ILibros_ListarLibros_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/ILibros/ListarLibrosRepetidoExceptionFault" name="RepetidoExceptionFault" message="tns:ILibros_ListarLibros_RepetidoExceptionFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerLibroPorTitulo">
+      <wsdl:input wsaw:Action="http://tempuri.org/ILibros/ObtenerLibroPorTitulo" message="tns:ILibros_ObtenerLibroPorTitulo_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ILibros/ObtenerLibroPorTituloResponse" message="tns:ILibros_ObtenerLibroPorTitulo_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/ILibros/ObtenerLibroPorTituloRepetidoExceptionFault" name="RepetidoExceptionFault" message="tns:ILibros_ObtenerLibroPorTitulo_RepetidoExceptionFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerLibroPorAutor">
+      <wsdl:input wsaw:Action="http://tempuri.org/ILibros/ObtenerLibroPorAutor" message="tns:ILibros_ObtenerLibroPorAutor_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ILibros/ObtenerLibroPorAutorResponse" message="tns:ILibros_ObtenerLibroPorAutor_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/ILibros/ObtenerLibroPorAutorRepetidoExceptionFault" name="RepetidoExceptionFault" message="tns:ILibros_ObtenerLibroPorAutor_RepetidoExceptionFault_FaultMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_ILibros" type="tns:ILibros">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="CrearLibro">
+      <soap:operation soapAction="http://tempuri.org/ILibros/CrearLibro" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="RepetidoExceptionFault">
+        <soap:fault use="literal" name="RepetidoExceptionFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerLibro">
+      <soap:operation soapAction="http://tempuri.org/ILibros/ObtenerLibro" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="RepetidoExceptionFault">
+        <soap:fault use="literal" name="RepetidoExceptionFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="ModificarLibro">
+      <soap:operation soapAction="http://tempuri.org/ILibros/ModificarLibro" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="RepetidoExceptionFault">
+        <soap:fault use="literal" name="RepetidoExceptionFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="EliminarLibro">
+      <soap:operation soapAction="http://tempuri.org/ILibros/EliminarLibro" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="RepetidoExceptionFault">
+        <soap:fault use="literal" name="RepetidoExceptionFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="ListarLibros">
+      <soap:operation soapAction="http://tempuri.org/ILibros/ListarLibros" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="RepetidoExceptionFault">
+        <soap:fault use="literal" name="RepetidoExceptionFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerLibroPorTitulo">
+      <soap:operation soapAction="http://tempuri.org/ILibros/ObtenerLibroPorTitulo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="RepetidoExceptionFault">
+        <soap:fault use="literal" name="RepetidoExceptionFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerLibroPorAutor">
+      <soap:operation soapAction="http://tempuri.org/ILibros/ObtenerLibroPorAutor" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="RepetidoExceptionFault">
+        <soap:fault use="literal" name="RepetidoExceptionFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="Libros">
+    <wsdl:port name="BasicHttpBinding_ILibros" binding="tns:BasicHttpBinding_ILibros">
+      <soap:address location="http://localhost:49525/Libros.svc" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
