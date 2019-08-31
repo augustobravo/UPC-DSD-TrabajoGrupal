@@ -96,5 +96,10 @@ namespace WCFBiblioteca
 
         public void cambio() { }
         
+        public void nuevoMetodo(int a)
+        {
+            int b = 0;
+            a = b;
+        }
     }
 }
