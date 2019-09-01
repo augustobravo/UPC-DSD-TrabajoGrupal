@@ -13,6 +13,7 @@ namespace WCFBiblioteca
     // NOTA: puede usar el comando "Rename" del menú "Refactorizar" para cambiar el nombre de clase "Libros" en el código, en svc y en el archivo de configuración a la vez.
     // NOTA: para iniciar el Cliente de prueba WCF para probar este servicio, seleccione Libros.svc o Libros.svc.cs en el Explorador de soluciones e inicie la depuración.
     // NOTA: Metodos de CrearLibro, EliminarLibro, ModificarLibro, EliminarLibro, ObtenerLibro
+    // NOTA : Se utilizara ObtenerPorTitulo para la busqueda del Articulo
     // Agregar Service devolucion de Libros
  public class Libros : ILibros
     {
