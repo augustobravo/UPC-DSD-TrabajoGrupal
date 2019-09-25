@@ -1,0 +1,275 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="BibliotecaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="t_catalogo">
+          <Key>
+            <PropertyRef Name="tx_cod_bibl" />
+          </Key>
+          <Property Name="id_articulo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="tx_cod_bibl" Type="varchar" MaxLength="25" Nullable="false" />
+          <Property Name="tx_descripcion" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="nu_estado" Type="int" />
+          <Property Name="tx_ubicacion1" Type="varchar" MaxLength="60" />
+          <Property Name="tx_ubicacion2" Type="varchar" MaxLength="60" />
+          <Property Name="tx_cod_barras" Type="varchar" MaxLength="50" />
+          <Property Name="tx_imagen_url" Type="varchar(max)" />
+          <Property Name="tx_autor" Type="varchar" MaxLength="200" />
+          <Property Name="tx_descripcion2" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="t_lector">
+          <Key>
+            <PropertyRef Name="nu_dni" />
+          </Key>
+          <Property Name="id_lector" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nu_dni" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="tx_nombres" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="tx_direccion" Type="varchar" MaxLength="50" />
+          <Property Name="dt_fecha_nac" Type="date" />
+          <Property Name="nu_estado" Type="int" />
+          <Property Name="tx_email" Type="varchar" MaxLength="200" />
+          <Property Name="tx_contrasena" Type="varchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="t_prestamo">
+          <Key>
+            <PropertyRef Name="id_prestamo" />
+          </Key>
+          <Property Name="id_prestamo" Type="int" Nullable="false" />
+          <Property Name="dt_fecha_prestamo" Type="datetime" Nullable="false" />
+          <Property Name="nu_dni" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="tx_cod_bibl" Type="varchar" MaxLength="25" Nullable="false" />
+          <Property Name="dt_fecha_vencimiento" Type="datetime" Nullable="false" />
+          <Property Name="nu_estado" Type="int" />
+          <Property Name="dt_fecha_devolucion" Type="datetime" />
+        </EntityType>
+        <Association Name="FK_t_prestamo_t_catalogo">
+          <End Role="t_catalogo" Type="Self.t_catalogo" Multiplicity="1" />
+          <End Role="t_prestamo" Type="Self.t_prestamo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="t_catalogo">
+              <PropertyRef Name="tx_cod_bibl" />
+            </Principal>
+            <Dependent Role="t_prestamo">
+              <PropertyRef Name="tx_cod_bibl" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_t_prestamo_t_lector">
+          <End Role="t_lector" Type="Self.t_lector" Multiplicity="1" />
+          <End Role="t_prestamo" Type="Self.t_prestamo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="t_lector">
+              <PropertyRef Name="nu_dni" />
+            </Principal>
+            <Dependent Role="t_prestamo">
+              <PropertyRef Name="nu_dni" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="BibliotecaModelStoreContainer">
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="t_catalogo" EntityType="Self.t_catalogo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="t_lector" EntityType="Self.t_lector" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="t_prestamo" EntityType="Self.t_prestamo" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_t_prestamo_t_catalogo" Association="Self.FK_t_prestamo_t_catalogo">
+            <End Role="t_catalogo" EntitySet="t_catalogo" />
+            <End Role="t_prestamo" EntitySet="t_prestamo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_t_prestamo_t_lector" Association="Self.FK_t_prestamo_t_lector">
+            <End Role="t_lector" EntitySet="t_lector" />
+            <End Role="t_prestamo" EntitySet="t_prestamo" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="BibliotecaModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="t_catalogo">
+          <Key>
+            <PropertyRef Name="tx_cod_bibl" />
+          </Key>
+          <Property Name="id_articulo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="tx_cod_bibl" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="tx_descripcion" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="nu_estado" Type="Int32" />
+          <Property Name="tx_ubicacion1" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="tx_ubicacion2" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="tx_cod_barras" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="tx_imagen_url" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="t_prestamo" Relationship="Self.FK_t_prestamo_t_catalogo" FromRole="t_catalogo" ToRole="t_prestamo" />
+          <Property Name="tx_autor" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="tx_descripcion2" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="t_prestamo">
+          <Key>
+            <PropertyRef Name="id_prestamo" />
+          </Key>
+          <Property Name="id_prestamo" Type="Int32" Nullable="false" />
+          <Property Name="dt_fecha_prestamo" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="nu_dni" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="tx_cod_bibl" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="dt_fecha_vencimiento" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="nu_estado" Type="Int32" />
+          <Property Name="dt_fecha_devolucion" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="t_catalogo" Relationship="Self.FK_t_prestamo_t_catalogo" FromRole="t_prestamo" ToRole="t_catalogo" />
+          <NavigationProperty Name="t_lector" Relationship="BibliotecaModel.FK_t_prestamo_t_lector" FromRole="t_prestamo" ToRole="t_lector" />
+        </EntityType>
+        <Association Name="FK_t_prestamo_t_catalogo">
+          <End Role="t_catalogo" Type="Self.t_catalogo" Multiplicity="1" />
+          <End Role="t_prestamo" Type="Self.t_prestamo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="t_catalogo">
+              <PropertyRef Name="tx_cod_bibl" />
+            </Principal>
+            <Dependent Role="t_prestamo">
+              <PropertyRef Name="tx_cod_bibl" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="BibliotecaEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="t_catalogo" EntityType="Self.t_catalogo" />
+          <EntitySet Name="t_prestamo" EntityType="Self.t_prestamo" />
+          <AssociationSet Name="FK_t_prestamo_t_catalogo" Association="Self.FK_t_prestamo_t_catalogo">
+            <End Role="t_catalogo" EntitySet="t_catalogo" />
+            <End Role="t_prestamo" EntitySet="t_prestamo" />
+          </AssociationSet>
+          <EntitySet Name="sysdiagrams" EntityType="BibliotecaModel.sysdiagrams" />
+          <EntitySet Name="t_lector" EntityType="BibliotecaModel.t_lector" />
+          <AssociationSet Name="FK_t_prestamo_t_lector" Association="BibliotecaModel.FK_t_prestamo_t_lector">
+            <End Role="t_lector" EntitySet="t_lector" />
+            <End Role="t_prestamo" EntitySet="t_prestamo" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="t_lector">
+          <Key>
+            <PropertyRef Name="nu_dni" />
+          </Key>
+          <Property Name="id_lector" Type="Int32" Nullable="false" />
+          <Property Name="nu_dni" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="tx_nombres" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="tx_direccion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="dt_fecha_nac" Type="DateTime" Precision="0" />
+          <Property Name="nu_estado" Type="Int32" />
+          <Property Name="tx_email" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="tx_contrasena" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="t_prestamo" Relationship="BibliotecaModel.FK_t_prestamo_t_lector" FromRole="t_lector" ToRole="t_prestamo" />
+        </EntityType>
+        <Association Name="FK_t_prestamo_t_lector">
+          <End Type="BibliotecaModel.t_lector" Role="t_lector" Multiplicity="1" />
+          <End Type="BibliotecaModel.t_prestamo" Role="t_prestamo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="t_lector">
+              <PropertyRef Name="nu_dni" />
+            </Principal>
+            <Dependent Role="t_prestamo">
+              <PropertyRef Name="nu_dni" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="BibliotecaModelStoreContainer" CdmEntityContainer="BibliotecaEntities">
+          <EntitySetMapping Name="t_catalogo">
+            <EntityTypeMapping TypeName="BibliotecaModel.t_catalogo">
+              <MappingFragment StoreEntitySet="t_catalogo">
+                <ScalarProperty Name="tx_descripcion2" ColumnName="tx_descripcion2" />
+                <ScalarProperty Name="tx_autor" ColumnName="tx_autor" />
+                <ScalarProperty Name="id_articulo" ColumnName="id_articulo" />
+                <ScalarProperty Name="tx_cod_bibl" ColumnName="tx_cod_bibl" />
+                <ScalarProperty Name="tx_descripcion" ColumnName="tx_descripcion" />
+                <ScalarProperty Name="nu_estado" ColumnName="nu_estado" />
+                <ScalarProperty Name="tx_ubicacion1" ColumnName="tx_ubicacion1" />
+                <ScalarProperty Name="tx_ubicacion2" ColumnName="tx_ubicacion2" />
+                <ScalarProperty Name="tx_cod_barras" ColumnName="tx_cod_barras" />
+                <ScalarProperty Name="tx_imagen_url" ColumnName="tx_imagen_url" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="t_prestamo">
+            <EntityTypeMapping TypeName="BibliotecaModel.t_prestamo">
+              <MappingFragment StoreEntitySet="t_prestamo">
+                <ScalarProperty Name="id_prestamo" ColumnName="id_prestamo" />
+                <ScalarProperty Name="dt_fecha_prestamo" ColumnName="dt_fecha_prestamo" />
+                <ScalarProperty Name="nu_dni" ColumnName="nu_dni" />
+                <ScalarProperty Name="tx_cod_bibl" ColumnName="tx_cod_bibl" />
+                <ScalarProperty Name="dt_fecha_vencimiento" ColumnName="dt_fecha_vencimiento" />
+                <ScalarProperty Name="nu_estado" ColumnName="nu_estado" />
+                <ScalarProperty Name="dt_fecha_devolucion" ColumnName="dt_fecha_devolucion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="BibliotecaModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="definition" ColumnName="definition" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="t_lector">
+            <EntityTypeMapping TypeName="BibliotecaModel.t_lector">
+              <MappingFragment StoreEntitySet="t_lector">
+                <ScalarProperty Name="tx_contrasena" ColumnName="tx_contrasena" />
+                <ScalarProperty Name="tx_email" ColumnName="tx_email" />
+                <ScalarProperty Name="nu_estado" ColumnName="nu_estado" />
+                <ScalarProperty Name="dt_fecha_nac" ColumnName="dt_fecha_nac" />
+                <ScalarProperty Name="tx_direccion" ColumnName="tx_direccion" />
+                <ScalarProperty Name="tx_nombres" ColumnName="tx_nombres" />
+                <ScalarProperty Name="nu_dni" ColumnName="nu_dni" />
+                <ScalarProperty Name="id_lector" ColumnName="id_lector" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

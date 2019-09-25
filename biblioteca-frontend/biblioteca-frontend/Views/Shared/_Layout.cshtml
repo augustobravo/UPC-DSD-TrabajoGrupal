@@ -1,0 +1,88 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<!-- Mirrored from askbootstrap.com/preview/osahan-land/index2.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 10 May 2018 17:25:17 GMT -->
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Servicios varios">
+    <meta name="author" content="Edited by Avengers">
+    <title>Biblioteca Municipal</title>
+    <!-- Favicon Icon -->
+    <link rel="icon" type="image/png" href="images/favicon.html">
+    <!-- Bootstrap core CSS -->
+    <link href="~/Content/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/css/bootstrap-datetimepicker.min.css" rel="stylesheet" />
+    <!-- Material Design Icons -->
+    <link href="~/Content/vendor/icons/css/materialdesignicons.min.css" rel="stylesheet" />
+    <!-- Select2 CSS -->
+    <link href="~/Content/vendor/select2/css/select2-bootstrap.css" rel="stylesheet" />
+    <link href="~/Content/vendor/select2/css/select2.min.css" rel="stylesheet" />
+    <!-- Custom styles for this template -->
+    <link href="~/Content/css/osahan.css" rel="stylesheet" />
+</head>
+<body>
+        <!-- Navbar -->
+        <header>
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                <div class="container">
+                    <a class="navbar-brand text-success logo" href="index2.html"><i class="mdi mdi-home-map-marker"></i> <strong>Biblioteca</strong> Parroquial Santa Rosa</a>
+                    <div class="collapse navbar-collapse" id="navbarResponsive">
+                        <ul class="navbar-nav mr-auto mt-2 mt-lg-0 margin-auto">
+                            <li class="nav-item"><a class="nav-link " href="index2.html">INICIO</a></li>
+                            <li class="nav-item"><a class="nav-link " href="about.html">NOSOTROS</a></li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownPortfolio" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    SERVICIOS
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdownPortfolio">
+                                    <a class="dropdown-item" href="index1.html">Préstamos</a>
+                                    <a class="dropdown-item" href="index2.html">Reservas</a>
+                                    <a class="dropdown-item" href="index3.html">Registro</a>
+                                </div>
+                            </li>
+                            <li class="nav-item"><a class="nav-link " href="register.html">PUBLICAR</a></li>
+                            <li class="nav-item dropdown"><a class="nav-link " href="contact.html">CONTACTANOS</a></li>
+                        </ul>
+                        <div class="my-2 my-lg-0">
+                            <ul class="list-inline main-nav-right">
+                                <li class="list-inline-item">
+                                    <a class="btn btn-link btn-sm" href="@Url.Action("Login","Home")">Ingresa</a>
+                                </li>
+                                <li class="list-inline-item">
+                                    <a class="btn btn-success btn-sm" href="@Url.Action("Register","Home")">Registrate</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+        </header>
+        <!-- End Navbar -->
+        @RenderBody();
+        <!--Copyright-->
+        <section class="pt-4 pb-4 text-center">
+            <p class="mt-0 mb-0">© Copyright 2018 Biblioteca Municipal. All Rights Reserved</p>
+            <small class="mt-0 mb-0">
+                Developed <i class="mdi mdi-star-outline"></i>	by
+                <a class="text-dark" target="_blank" href="https://github.com/ZetaGH/">ZetaGH</a>
+            </small>
+        </section>
+        <!--End Copyright-->
+        <script src="~/Content/vendor/jquery/jquery.min.js"></script>
+        <script src="~/Content/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+        <!-- Contact form JavaScript -->
+        <!-- Do not edit these files! In order to set the email address and subject line for the contact form go to the bin/contact_me.php file. -->
+        <script src="~/Content/js/jqBootstrapValidation.js"></script>
+        <script src="~/Content/js/contact_me.js"></script>
+        <!-- select2 Js -->
+        <script src="~/Content/vendor/select2/js/select2.min.js"></script>
+        <!-- Custom -->
+        <script src="~/Content/js/custom.js"></script>
+        
+        <script src="~/Content/js/moment.min.js"></script>
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js"></script>
+        @RenderSection("scripts", required:false)
+</body>
+</html>

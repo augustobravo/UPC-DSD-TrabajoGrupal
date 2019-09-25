@@ -1,0 +1,131 @@
+﻿@model biblioteca_frontend.Models.Catalogo
+@{
+    ViewBag.Title = "Details";
+    //var user = (biblioteca_frontend.Models.Lector)Session["user"];
+}
+
+
+<!-- Modal-->
+<div class="modal" tabindex="-1" role="dialog" id="reserveModal">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Modal title</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                   <div class="container">
+                       <div class="row">
+                           <div class="col-sm-6">
+                               <div class="form-group">
+                                   <label class="text-left">Fecha de prestamo <span style="color:red">(required)</span></label>
+                                   <input type="date" class="form-control"/>
+                               </div>
+                           </div>
+                           <div class="col-sm-6">
+                               <div class="form-group">
+                                   <label class="text-left">Fecha de devolucion <span style="color:red">(required)</span></label>
+                                   <input type="date" class="form-control"/>
+                               </div>
+                           </div>
+                       </div>
+                       <div class="row">
+                           <div class="col-sm-6">
+                               <div class="form-group">
+                                   <label class="text-left">Codigo de libro</label>
+                                   <input type="text" class="form-control" disabled value="@Model.tx_cod_bibl"/>
+                               </div>
+                           </div>
+                           <div class="col-sm-6">
+                               <div class="form-group">
+                                   <label class="text-left">DNI</label>
+                                   <input type="text" class="form-control" disabled value=""/>
+                                   @*<input type="text" class="form-control" disabled value="@user.nu_dni" />*@
+                               </div>
+                           </div>
+                       </div>
+                       <div class="row">
+                           <div class="col-sm-6">
+                               <div class="form-group">
+                                   <label class="text-left">Fecha Maxima de Devolucion</label>
+                                   <input type="date" class="form-control" disabled />
+                               </div>
+                           </div>
+                       </div>
+                   </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" style="background-color:#64ddba;border-color:#64ddba;">Save changes</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End Modal-->
+
+
+
+
+
+<!-- Book Details -->
+<section class="section-padding">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-5 col-md-5">
+                <img class="rounded img-fluid" src="@Model.tx_imagen_url" alt="Card image cap" style="width:500px;height:350px;">
+            </div>
+            <div class="col-lg-7 col-md-7">
+                <h1 class="mt-2 mb-0">@Model.tx_descripcion</h1>
+                <h5 class="text-success mb-3"><i class="mdi mdi-home-map-marker"></i>@Model.tx_autor</h5>
+                <p style="color:#212529;">
+                    @Model.tx_descripcion2
+                </p>
+
+                <div class="row mt-3">
+                    <div class="col-lg-6 col-md-6">
+                        <p style="color:#212529;">
+                            <strong class="text-dark">Código de libro :</strong>
+                            @Model.tx_cod_bibl
+                        </p>
+                        <p style="color:#212529;">
+                            <strong class="text-dark">Código de barra:</strong>
+                            @Model.tx_cod_barras
+                        </p>
+                    </div>
+                    <div class="col-lg-6 col-md-6">
+                        <p style="color:#212529;"><strong class="text-dark">N° días prestamo :</strong>7</p>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="row justify-content-center">
+            <div class="col-md-12 col align-self-center">
+                <div class="card-body">
+                    <div class="input-group-append ml-5">
+                        <a href="#">
+                            <button class="btn btn-success btn-block" id="reserveBtn" style="position: relative;left: 500px;" type="button">
+                                PRÉSTAMO
+                            </button>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- End Book Details -->
+
+@section Scripts{
+    <script>
+
+        $('#reserveBtn').click(function () {
+            $('#reserveModal').modal('show');
+        })
+
+        
+    </script>
+}

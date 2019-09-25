@@ -1,0 +1,61 @@
+﻿@using biblioteca_frontend.Models
+@model List<biblioteca_frontend.Models.Catalogo>
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!-- Main Slider With Form -->
+<section class="osahan-slider">
+    <div class="bg-buscador">
+        <form class="buscador-form" action="@Url.Action("Search","Home")">
+            <input class="buscador-input" placeholder="   Ingresa el libro a buscar" type="text" name="name">
+            <input class="buscador-button" type="submit" value="Buscar">
+        </form>
+    </div>
+</section>
+<!-- End Main Slider With Form -->
+
+<!-- Properties List -->
+<section class="section-padding">
+    <div class="section-title text-center mb-5">
+        <h2>Nuestros libros más buscados</h2>
+        <p>Da click sobre la imagen para acceder al contenido.</p>
+    </div>
+    <div class="container">
+        @{
+            int column = 3;
+            int countItems = Model.Count();
+            int rows = countItems / column + 1;
+            int pos = 0;
+
+            for (int f = 0; f < rows; f++)
+            {
+                <div class="row">
+                    @for (int c = 0; c < column && ((countItems - pos) > 0); c++)
+                    {
+                        var item = Model.ElementAt(pos);
+                        <div class="col-lg-4 col-md-4">
+                            <div class="card card-list">
+                                <a href="@Url.Action("Details","Catalogo",new {id = item.id_articulo})">
+                                    <img class="card-img-top" src="@item.tx_imagen_url" alt="Card image cap" style="height:200px">
+                                    <div class="card-body" style="height:90px">
+                                        <h5 class="card-title">@item.tx_descripcion</h5>
+                                        <h6 class="card-subtitle mb-2 text-muted"><i class="mdi mdi-home-map-marker"></i>@item.tx_cod_bibl</h6>
+                                    </div>
+                                    <div class="card-footer">
+                                        <div><i class="mdi mdi-sofa"></i>Ubicación: <strong>@item.tx_ubicacion1</strong></div>
+                                        <div><i class="mdi mdi-scale-bathroom"></i>Ubicación alterna: <strong>@item.tx_ubicacion2</strong></div>
+                                        <div><i class="mdi mdi-scale-bathroom"></i>Código de barras: <strong>@item.tx_cod_barras</strong></div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                        pos++;
+                    }
+                </div>
+            }
+
+        }
+    </div>
+</section>
+<!-- End Properties List -->

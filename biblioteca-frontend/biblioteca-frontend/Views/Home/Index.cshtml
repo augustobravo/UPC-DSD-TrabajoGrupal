@@ -1,0 +1,8 @@
+﻿@model List<biblioteca_frontend.Models.Catalogo>
+@{
+    ViewBag.Title = "Home Page";
+    Layout = null;
+}
+@*Html.Partial La vista parcial es una vista reutilizable, que se puede utilizar como vista secundaria en varias otras vistas.*@
+@*Representa el contenido de la vista parcial en la vista referida. El parámetro modelo pasa el objeto modelo a la vista parcial.*@
+@Html.Partial("_Catalogo", Model) 
